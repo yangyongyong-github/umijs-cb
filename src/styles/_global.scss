@@ -1,0 +1,24 @@
+@import "./var.scss";
+@import './mixin.scss';
+
+html {
+  color: $words;
+  width: $base-container-width; // 1200px
+  margin: 0 auto;
+}
+
+body {
+  font-size: $text-normal-size;
+  margin: 0;
+  box-sizing: border-box;
+  // border: 1px solid; // body brder test
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+
+  &:hover {
+    color: $primary;
+  }
+}

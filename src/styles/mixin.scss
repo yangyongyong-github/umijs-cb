@@ -1,0 +1,45 @@
+// @include
+
+@mixin self-center($pos: absolute) {
+  position: $pos;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+@mixin self-fill($pos: absolute) {
+  position: $pos;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+}
+
+
+@mixin to-flex($justify-content: space-between, $align-content: center) {
+  display: flex;
+  justify-content: $justify-content;
+  align-content: $align-content;
+}
+
+// 上下左右的内边距
+@mixin box-show-padding($padA:0.5rem, $padB:0.5rem) {
+  box-sizing: border-box;
+  padding: $padA $padB;
+}
+
+@mixin normal-shadow-hover($px1:12px, $px2:10px, $color-light:0.3, $time:0.5s) {
+  &:hover {
+    box-shadow: 0 $px1 $px2 0 rgba(0, 0, 0, $color-light);
+    transition: all 1.2s;
+  }
+
+  transition: all $time linear;
+}
+
+@mixin linear-blue-bg{
+  color: #fff;
+  text-decoration: none;
+  background-color: #5ebcff;
+  background-image: linear-gradient(52deg, #5ebcff, #3ba1ff 40%, #005dcc);
+}
