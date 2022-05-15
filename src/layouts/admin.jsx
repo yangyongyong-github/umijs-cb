@@ -1,9 +1,12 @@
-import React from 'react'
+import React from 'react';
 
-const admin = () => {
+const admin = ({ children }) => {
   return (
-    <div>admin</div>
-  )
-}
+    <div>
+      admin
+      {children}
+    </div>
+  );
+};
 
-export default admin
+export default admin;

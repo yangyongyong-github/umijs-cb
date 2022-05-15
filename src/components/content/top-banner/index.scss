@@ -1,0 +1,54 @@
+@import 'styles/_var.scss';
+@import 'styles/mixin.scss';
+
+$width-box: 400px;
+
+.header-container {
+    width: 90%;
+    margin: $margin-a 5%;
+    height: 100px;
+    // margin-top: $margin-a;
+    // @include linear-blue-bg; // test
+    @include to-flex();
+    @include normal-shadow-hover();
+
+    button {
+        font-weight: normal;
+        margin-right: 5px;
+        margin-top: 10px;
+    }
+
+    .left,
+    .right {
+        width: $width-box;
+        height: 100%;
+    }
+
+    .logo {
+        margin: 30px;
+        padding: 10px;
+        cursor: pointer;
+    }
+
+    .log-span {
+        text-align: center;
+        padding: 5px 10px;
+        box-shadow: 0 2px 7px 0 rgba(0, 0, 0, 0.4);
+        
+    }
+
+    .middle {
+        // width: 100% - 200px;
+        // height: 100%;
+    }
+
+    .right {
+        height: 100%;
+        @include to-flex();
+
+        .login-area {
+            width: 50%;
+            height: 100%;
+        }
+    }
+}

@@ -1,9 +1,12 @@
-import React from 'react'
+import React from 'react';
 
-const user = () => {
+const user = ({ children }) => {
   return (
-    <div>user</div>
-  )
-}
+    <div>
+      user
+      {children}
+    </div>
+  );
+};
 
-export default user
+export default user;

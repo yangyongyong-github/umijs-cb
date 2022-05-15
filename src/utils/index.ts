@@ -14,3 +14,15 @@ export default function delay(ms: number): Promise<void> {
         setTimeout(resolve, ms);
     })
 }
+
+/**
+ * 字符串首字母大写
+ * @params{}
+ */
+export const strfirst2Upper = (str: string, all: boolean = false) => {
+    if (all) {
+        return str.trim().toLowerCase().replace(str[0], str[0].toUpperCase())
+    } else {
+        return str.trim().replace(str[0], str[0].toUpperCase())
+    }
+}

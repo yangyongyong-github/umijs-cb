@@ -30,6 +30,8 @@ export default defineConfig({
     // config: resolve(__dirname, './src/utils/config'),
     themes: resolve(__dirname, './src/themes'),
     utils: resolve(__dirname, './src/utils'),
+    images: resolve(__dirname, './src/assets/images'),
+    common: resolve(__dirname, './src/common'),
     // useCommon: resolve(__dirname, './src/hook/useCommon.jsx'),
   },
 });

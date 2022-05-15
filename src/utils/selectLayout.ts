@@ -29,14 +29,11 @@ pathArrs.push(
  * 根据不同的地址来选择不同的layout
  */
 export const selectLayout = (pathName: string) => {
-
-  pathArrs.filter(item => {
-    if (pathName === item.path) {
-      console.log(22, strfirst2Upper(item.pathName) + 'Layout');
-      return strfirst2Upper(item.pathName) + 'Layout';// 首字母大写+layout
-    } else {
-      return strfirst2Upper('normal') + 'Layout';
-    }
-  })
+  const result = pathArrs.find(item => item.path === pathName);
+  if (result) {
+    return strfirst2Upper(result.pathName) + 'Layout';
+  } else {
+    return strfirst2Upper('normal') + 'Layout';
+  }
 }
 

@@ -1,0 +1,22 @@
+@import 'styles/_var.scss';
+@import 'styles/mixin.scss';
+
+.top-banner-container {
+
+   @include to-flex();
+   margin-top: $size-10;
+   @include normal-shadow-hover();
+   padding: $size-10;
+   box-sizing: border-box;
+
+    .left {
+        width: 150px;
+        border: 1px solid;
+        padding: 10px;
+        box-sizing: border-box;
+
+        img.logo {
+            width: 100%;
+        }
+    }
+}
