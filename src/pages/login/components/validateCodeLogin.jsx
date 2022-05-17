@@ -7,8 +7,10 @@ import IconMap from 'components/common/IconMap';
 const validateCodeLogin = ({ FormItem, Input }) => {
   const [disabled, setDisabled] = useState(true);
   const [currentStatus, setCurrentStatus] = useState(true);
+  // 验证码的时间长度
+  const valiTimeLong = 10; // 60
   // 验证码的倒计时
-  let [currentTime, setCurrentTime] = useState(60);
+  let [currentTime, setCurrentTime] = useState(valiTimeLong);
 
   /**
    * 发送验证码组件内部进行发送
@@ -32,7 +34,7 @@ const validateCodeLogin = ({ FormItem, Input }) => {
         clearInterval(timer);
         setCurrentStatus(true);
         setDisabled(false);
-        setCurrentTime(60);
+        setCurrentTime(valiTimeLong);
         return;
       }
       setCurrentTime(--currentTime);
