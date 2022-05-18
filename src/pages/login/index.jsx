@@ -4,7 +4,7 @@ import { Form, Input, Button, Row, Col } from 'antd';
 import IconMap from 'components/common/IconMap';
 
 import AccountLogin from './components/AccountLogin';
-import ValidateCodeLogin from './components/validateCodeLogin';
+import ValidateCodeLogin from './components/ValidateCodeLogin';
 
 import LogoImageUrl from 'images/logo.png';
 
@@ -13,13 +13,17 @@ import './style/login.scss'
 const FormItem = Form.Item;
 
 const Login = ({ history }) => {
+
   const [form] = Form.useForm();
-  // 判断类型：accountLoigin or validateCode
+
+  // 判断登录类型：账密 or 验证码
   const [type, setType] = useState(0); // 0： validateCode
 
   // 表单输入完成后的提交事件
   const submitUserInfo = (data) => {
     console.log(data);
+    // 使用umi的dispatch 状态触发函数
+    dispatch({})
   };
 
   const ComponentSelector = (props) =>
@@ -70,4 +74,8 @@ const Login = ({ history }) => {
   );
 };
 
+
+/**
+ * 登录
+ */
 export default Login;

@@ -24,7 +24,8 @@ export default defineConfig({
   //   },
   // },
   alias: {
-    // api: resolve(__dirname, './src/services/'),
+    // api 接口调用
+    api: resolve(__dirname, './src/server/'),
     components: resolve(__dirname, './src/components'),
     styles: resolve(__dirname, './src/styles'),
     // config: resolve(__dirname, './src/utils/config'),

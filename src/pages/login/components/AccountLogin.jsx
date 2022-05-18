@@ -8,7 +8,7 @@ import IconMap from 'components/common/IconMap';
  */
 
 const AccountLogin = ({ FormItem, Input }) => {
-  console.log('test', { FormItem, Input });
+  // console.log('test', { FormItem, Input });
   return (
     <div>
       {/* name属性为了rules规则， hasFeedback 右侧的状态小图标展示*/}
@@ -26,4 +26,7 @@ const AccountLogin = ({ FormItem, Input }) => {
   );
 };
 
+/**
+ * 账密登录
+ */
 export default AccountLogin;

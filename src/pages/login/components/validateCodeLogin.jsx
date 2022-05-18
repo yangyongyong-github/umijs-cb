@@ -4,7 +4,7 @@ import { loginRule } from 'utils/rules';
 import IconMap from 'components/common/IconMap';
 // import $http from 'api';
 
-const validateCodeLogin = ({ FormItem, Input }) => {
+const ValidateCodeLogin = ({ FormItem, Input }) => {
   const [disabled, setDisabled] = useState(true);
   const [currentStatus, setCurrentStatus] = useState(true);
   // 验证码的时间长度
@@ -77,4 +77,8 @@ const validateCodeLogin = ({ FormItem, Input }) => {
   );
 };
 
-export default validateCodeLogin;
+
+/**
+ * 验证码登录
+ */
+export default ValidateCodeLogin;

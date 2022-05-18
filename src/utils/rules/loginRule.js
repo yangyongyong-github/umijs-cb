@@ -1,14 +1,26 @@
 export const loginRule = {
+
+  /**
+   * 用户名校验规则
+   */
   userRule: [
     { required: true, message: '账户名不能为空' },
     { max: 16, message: '账户名长度不能大于16位' },
     { min: 4, message: '账户名长度不能小于4位' },
   ],
+
+  /**
+   * 密码校验规则
+   */
   passwordRule: [
     { required: true, message: '密码不能为空' },
     { max: 16, message: '密码长度不能大于16位' },
     { min: 4, message: '密码长度不能小于4位' },
   ],
+
+  /**
+   * 电话号码校验为空
+   */
   mobileRule: [
     {
       /**
@@ -32,17 +44,27 @@ export const loginRule = {
       },
     },
   ],
+
+
+  /**
+   * 验证码校验规则
+   */
   smCodeRule: [
     { required: true, message: '验证码不能为空' },
     { max: 6, message: '最大长度为6位' },
     { min: 6, message: '最小长度为6位' },
   ],
+
+
+  /**
+   * 确认密码校验规则
+   */
   confirmPasswordRule(form) {
     return [
       {
         validator: (rule, val) => {
           switch (true) {
-            case !Boolean(val):
+            case !Boolean(val): // 输入值为空
               return Promise.reject('确认密码不能为空');
             case form.getFieldValue('password') !== val:
               return Promise.reject('两次输入的密码不相同');

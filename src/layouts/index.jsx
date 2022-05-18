@@ -8,6 +8,7 @@ import AdminLayout from './admin';
 import LoginLayout from './login';
 import NormalLayout from './normal';
 import UserLayout from './user';
+import Loading from 'components/common/Loading';
 
 import './style/index.scss'
 
@@ -21,7 +22,7 @@ const Layout = ({ children, location }) => {
   console.log(children);
   return (
     <div className="layout-top">
-      <Container>{children}</Container>
+      <Container> <Loading /> {children}</Container>
     </div>
   );
 };

@@ -6,6 +6,6 @@ export default function BaseLayout({ children }) {
     <>
       <TopBanner />
       {children}
-    2</>
+    </>
   );
 }
