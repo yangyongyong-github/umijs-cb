@@ -1,29 +1,29 @@
 import React, { useState } from 'react';
 import { Form, Input, Button, Row, Col } from 'antd';
-
 import IconMap from 'components/common/IconMap';
-
 import AccountLogin from './components/AccountLogin';
 import ValidateCodeLogin from './components/ValidateCodeLogin';
-
 import LogoImageUrl from 'images/logo.png';
+import './style/login.scss';
+import { useDispatch, useSelector } from 'umi';
 
-import './style/login.scss'
-
-const FormItem = Form.Item;
 
 const Login = ({ history }) => {
-
+  
+  const dispatch = useDispatch();
+  const FormItem = Form.Item;
   const [form] = Form.useForm();
 
-  // 判断登录类型：账密 or 验证码
-  const [type, setType] = useState(0); // 0： validateCode
+  // 判断登录类型：1账密 or 0验证码
+  const [type, setType] = useState(0);
+  const loading = useSelector((state) => state.loading);
 
   // 表单输入完成后的提交事件
   const submitUserInfo = (data) => {
-    console.log(data);
+    console.log('submitUserInfo : ', data);
     // 使用umi的dispatch 状态触发函数
-    dispatch({})
+    // params: type: login/resetPassword
+    dispatch({ type: 'users-login/login', payload: { ...data, type } });
   };
 
   const ComponentSelector = (props) =>
@@ -40,13 +40,13 @@ const Login = ({ history }) => {
       </div>
       <Form form={form} onFinish={submitUserInfo}>
         {/* 选择展示当前的哪个组件：accountLogin or validateCodeLogin */}
-        {ComponentSelector({ form, FormItem, Input })}
+        {ComponentSelector({ FormItem, Input, form })}
 
         <Row>
           <Button
             type="primary"
             htmlType="submit"
-            // loading={loading, effect['user/login']}
+            loading={loading.effects['users-login/login']}
           >
             登录
           </Button>
@@ -63,7 +63,10 @@ const Login = ({ history }) => {
             </p>
           </Col>
           <Col span={18}>
-            <p className="login-category login-type" onClick={() => setType(!type ? 1 : 0)}>
+            <p
+              className="login-category login-type"
+              onClick={() => setType(!type ? 1 : 0)}
+            >
               {!type ? loginTipText[0] : loginTipText[1]}
               {IconMap.arrowRight}
             </p>
@@ -73,7 +76,6 @@ const Login = ({ history }) => {
     </div>
   );
 };
-
 
 /**
  * 登录

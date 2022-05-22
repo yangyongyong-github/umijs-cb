@@ -2,10 +2,10 @@ import React, { useState } from 'react';
 import { Button, message } from 'antd';
 import { loginRule } from 'utils/rules';
 import IconMap from 'components/common/IconMap';
-// import $http from 'api';
+import $http from 'api';
 
-const ValidateCodeLogin = ({ FormItem, Input }) => {
-  const [disabled, setDisabled] = useState(true);
+const ValidateCodeLogin = ({ FormItem, Input, form }) => {
+  const [valiBtnDisabled, setValiBtnDisabled] = useState(true);
   const [currentStatus, setCurrentStatus] = useState(true);
   // 验证码的时间长度
   const valiTimeLong = 10; // 60
@@ -21,7 +21,7 @@ const ValidateCodeLogin = ({ FormItem, Input }) => {
     const mobile = form.getFieldValue('mobile');
     const res = await $http.getSmCode({ mobile });
     message.success(res.msg);
-    setDisabled(true);
+    setValiBtnDisabled(true);
     runTime();
   };
 
@@ -33,7 +33,7 @@ const ValidateCodeLogin = ({ FormItem, Input }) => {
       if (currentTime === 0) {
         clearInterval(timer);
         setCurrentStatus(true);
-        setDisabled(false);
+        setValiBtnDisabled(false);
         setCurrentTime(valiTimeLong);
         return;
       }
@@ -45,12 +45,16 @@ const ValidateCodeLogin = ({ FormItem, Input }) => {
    * 验证 发送验证码的手机号码是否正确
    */
   const mobileValChange = async () => {
-    try {
-      const status = await form.validateFiles(['mobile']);
-      setDisabled(false);
-    } catch (error) {
-      setDisabled(true);
-    }
+    await form
+      .validateFields(['mobile'])
+      .then(() => {
+        console.log('done');
+        setValiBtnDisabled(false);
+      })
+      .catch(() => {
+        console.log('fail');
+        setValiBtnDisabled(true);
+      });
   };
 
   return (
@@ -66,7 +70,7 @@ const ValidateCodeLogin = ({ FormItem, Input }) => {
         <Input
           prefix={IconMap.smCodeIcon}
           addonAfter={
-            <Button onClick={_sendSmCode} disabled={disabled}>
+            <Button onClick={_sendSmCode} disabled={valiBtnDisabled}>
               {currentStatus ? '发送验证码' : `${currentTime}秒后重新发送`}
             </Button>
           }
@@ -76,7 +80,6 @@ const ValidateCodeLogin = ({ FormItem, Input }) => {
     </div>
   );
 };
-
 
 /**
  * 验证码登录

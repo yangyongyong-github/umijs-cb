@@ -7,15 +7,18 @@ import $http from 'api';
 import ValidateCodeLogin from './components/ValidateCodeLogin';
 import UpdatePassword from './components/UpdatePassword';
 
-const FormItem = Form.Item; // 创建表单项
-const [form] = Form.useForm();
+// [用法报错]：必须放到 函数里面，不能把 hook当作func调用，而是应该hook comp调用
+// const FormItem = Form.Item; // 创建表单项
+// const [form] = Form.useForm();
 
-/**
- * forgetPassword
- */
+
 const forgetPassword = ({ history }) => {
+
+  const FormItem = Form.Item;
+  const [form] = Form.useForm();
+
   // 当前展示组件的标识：
-  // 1: 忘记密码（step1）  
+  // 1: 忘记密码（step1）
   // 2: 重置按钮（step2）
   const [currentStep, setCurrentStep] = useState(1);
 
@@ -26,7 +29,6 @@ const forgetPassword = ({ history }) => {
       ? _checkCode(data.code)
       : _updatePassword(data.confirmPassword);
   };
-
 
   /**
    * 用户输入的验证码检测
@@ -39,7 +41,6 @@ const forgetPassword = ({ history }) => {
       message.error(msg);
     }
   };
-
 
   /**
    * 更新密码
@@ -65,7 +66,7 @@ const forgetPassword = ({ history }) => {
     );
 
   return (
-    <div className="form forget-password">
+    <div className="login-form-container forget-password">
       <div className="forget-password-title">
         {currentStep === 1 ? '忘记密码' : '重置密码'}
       </div>

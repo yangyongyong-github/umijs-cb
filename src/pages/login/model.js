@@ -1,14 +1,14 @@
 import $http from 'api';
 import { message } from 'antd';
-import { history } from 'umi';
+// import { history } from 'umi';
 
 export default {
-    namespace: 'login',
+    namespace: 'users-login',
     state: {
-        // obj -> key valu str
-        userInfo: sessionStorage.getItem('userProfile') ? JSON.parse(sessionStorage).getItem('userProfile') : null;
+        userInfo: sessionStorage.getItem('userProfile') ? JSON.parse(sessionStorage).getItem('userProfile') : null,
     },
     reducers: {
+        // 更新用户信息
         updateUserProfile: (state, { payload }) => ({ ...state, ...payload })
     },
     effects: {

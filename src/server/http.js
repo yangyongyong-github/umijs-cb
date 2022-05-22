@@ -45,7 +45,8 @@ const judgeOkState = async (res) => {
  */
 const handleError = (error) => {
     if (error instanceof TypeError) {
-        message.error(`网络请求失败了${error}`)
+        console.log(`网络请求失败了! ${error}`);
+        message.error('网络请求失败了')
     }
     return {
         code: -1,

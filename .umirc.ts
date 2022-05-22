@@ -17,12 +17,12 @@ export default defineConfig({
     loading: '@/components/common/Loading',
   },
   fastRefresh: {},
-  // proxy: {
-  //   '/api': {
-  //     target: 'http://127.0.0.1:5008',
-  //     changeOrigin: true,
-  //   },
-  // },
+  proxy: {
+    '/api': {
+      target: 'http://127.0.0.1:7001',
+      changeOrigin: true,
+    },
+  },
   alias: {
     // api 接口调用
     api: resolve(__dirname, './src/server/'),
