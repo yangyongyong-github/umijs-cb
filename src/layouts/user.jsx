@@ -1,9 +1,10 @@
 import React from 'react';
+import TopBanner from '../components/content/top-banner';
 
 const user = ({ children }) => {
   return (
     <div>
-      user
+      <TopBanner />
       {children}
     </div>
   );

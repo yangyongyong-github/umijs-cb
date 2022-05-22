@@ -16,7 +16,11 @@ export default {
             // 不需要登录
             if (pathname !== '/login' && pathname !== '/forgetPasssWord') {
                 // 服务端验证
-                if (!sessionStorage.getItem('userProfile') || !sessionStorage.getItem('token') || !sessionStorage.getItem('routeList')) {
+                if (
+                    !sessionStorage.getItem('userProfile') ||
+                    !sessionStorage.getItem('token') ||
+                    !sessionStorage.getItem('routeList')
+                ) {
                     // 强行跳转到登录界面
                     history.replace('/login')
                 } else {
@@ -29,9 +33,11 @@ export default {
                     sessionStorage.setItem('routeList', JSON.stringify(routeList))
                 }
             } else {
-                // 无需访问权限-无需拦截
-                sessionStorage.clear()
+                // 无需拦截，此页面无需权限即可访问
+                sessionStorage.clear();
             }
+
+            // 判断用户当前的访问路劲
         }
     }
 }

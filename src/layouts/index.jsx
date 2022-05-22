@@ -12,8 +12,8 @@ import UserLayout from './user';
 import Loading from 'components/common/Loading';
 import { useSelector } from 'umi';
 
-// useSelector : hooks 的方式获取部分数据，dva 为 2.6.x 时有效。
 
+// useSelector : hooks 的方式获取部分数据，dva 为 2.6.x 时有效。
 
 /**
  * 根据不同的路劲选择不同的Layout
@@ -24,7 +24,7 @@ const Layout = ({ children, history, location }) => {
   const loading = useSelector((state) => state.loading);
 
   return (
-    <div className="layout-top">
+    <div className="layout-top"> 
       <Container>
         <Loading isShow={loading.effects['login']} />
         {children}

@@ -1,11 +1,11 @@
 import $http from 'api';
 import { message } from 'antd';
-// import { history } from 'umi';
+import { history } from 'umi';
 
 export default {
     namespace: 'users-login',
     state: {
-        userInfo: sessionStorage.getItem('userProfile') ? JSON.parse(sessionStorage).getItem('userProfile') : null,
+        userInfo: sessionStorage.getItem('userProfile') ? JSON.parse(sessionStorage.getItem('userProfile')) : null,
     },
     reducers: {
         // 更新用户信息
@@ -20,8 +20,12 @@ export default {
                 return
             }
 
-            sessionStorage.setItem('userProfile', JSON.stringify(data));
-
+            // 请求成功之后，进行路由表的获取
+            const routeData = yield call($http.getRouteList);
+            console.log('test route', routeData);
+            sessionStorage.setItem('userProfile', JSON.stringify(data))
+            sessionStorage.setItem('routeList', JSON.stringify(routeData.data));
+            console.log('test 2', sessionStorage.getItem('routeList'));
             yield put({
                 type: 'updateUserProfile',
                 payload: { userInfo: data },
@@ -29,6 +33,7 @@ export default {
 
             // todo 页面跳转
             console.log('page to  ', data, msg);
+            history.push('/admin')
         }
     }
 }
