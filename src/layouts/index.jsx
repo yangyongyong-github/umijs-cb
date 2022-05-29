@@ -7,8 +7,8 @@ import './style/index.scss';
 
 import AdminLayout from './admin';
 import LoginLayout from './login';
-import NormalLayout from './normal';
-import UserLayout from './user';
+// import NormalLayout from './normal';
+// import UserLayout from './user';
 import Loading from 'components/common/Loading';
 import { useSelector } from 'umi';
 
@@ -19,7 +19,7 @@ import { useSelector } from 'umi';
  * 根据不同的路劲选择不同的Layout
  */
 const Layout = ({ children, history, location }) => {
-  const layoutMap = { AdminLayout, LoginLayout, UserLayout, NormalLayout };
+  const layoutMap = { AdminLayout, LoginLayout};
   const Container = layoutMap[selectLayout(location.pathname)];
   const loading = useSelector((state) => state.loading);
 

@@ -4,20 +4,19 @@ import { history, Link } from 'umi';
 import LogoImageUrl from 'images/logo.png';
 import IconMap from 'components/common/IconMap';
 
-const SideBar = ({ Sider, Menu }) => {
+const SideBar = ({ Sider, Menu, collapse }) => {
   const pathname = history.location.pathname;
   const routeList = sessionStorage.getItem('routeList')
     ? JSON.parse(sessionStorage.getItem('routeList'))
     : [];
-  console.log(222, routeList);
 
   return (
-    <Sider theme="light" className="side-bar">
+    <Sider theme="light" className="side-bar" collapse={collapse}>
       {/* left-header */}
       <div className="brand">
         <div className="logo">
           <img src={LogoImageUrl} alt="" />
-          <h1>中国银行</h1>
+          {!collapse && <h1>中国银行</h1>}
         </div>
       </div>
       {/* left-body */}

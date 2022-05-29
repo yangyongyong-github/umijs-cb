@@ -18,11 +18,11 @@ pathArrs.push(
     pathName: 'admin',
     path: '/admin'
   },
-  {
-    id: uuid(),
-    pathName: 'user',
-    path: '/user'
-  },
+  // {
+  //   id: uuid(),
+  //   pathName: 'user',
+  //   path: '/user'
+  // },
 )
 
 /**
@@ -33,7 +33,7 @@ export const selectLayout = (pathName: string) => {
   if (result) {
     return strfirst2Upper(result.pathName) + 'Layout';
   } else {
-    return strfirst2Upper('normal') + 'Layout';
+    // return strfirst2Upper('normal') + 'Layout';
   }
 }
 

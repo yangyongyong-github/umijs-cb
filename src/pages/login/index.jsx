@@ -23,7 +23,7 @@ const Login = ({ history }) => {
     console.log('submitUserInfo : ', data);
     // 使用umi的dispatch 状态触发函数
     // params: type: login/resetPassword
-    dispatch({ type: 'users-login/login', payload: { ...data, type } });
+    dispatch({ type: 'userLogin/login', payload: { ...data, type } });
   };
 
   const ComponentSelector = (props) =>
@@ -46,7 +46,7 @@ const Login = ({ history }) => {
           <Button
             type="primary"
             htmlType="submit"
-            loading={loading.effects['users-login/login']}
+            loading={loading.effects['userLogin/login']}
           >
             登录
           </Button>
